@@ -58,7 +58,7 @@
   (windmove-default-keybindings))
 
 ;; ツールバーを非表示
-(tool-bar-mode -1)
+(when window-system (tool-bar-mode -1))
 
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
