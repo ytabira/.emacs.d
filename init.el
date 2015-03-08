@@ -12,28 +12,12 @@
 (setenv "LANG" "ja_JP.UTF-8")
 (set-language-environment "Japanese")
 
-(setq el-get-user-package-directory (locate-user-emacs-file "init"))
-(el-get-bundle auto-complete)
-(el-get-bundle rbenv)
-;;(el-get-bundle ruby-mode)
-(el-get-bundle yasnippet)
-(el-get-bundle Enhanced-Ruby-Mode)
-(el-get-bundle ruby-end)
-(el-get-bundle ruby-block)
-(el-get-bundle rspec-mode)
-(el-get-bundle auto-complete-ruby)
-(el-get-bundle auto-complete-yasnippet)
-(el-get-bundle robe-mode)
-(el-get-bundle smart-newline)
-(el-get-bundle anything-rurima)
-(el-get-bundle magit)
-(el-get-bundle magit-gitflow)
-(el-get-bundle mew)
-(el-get-bundle maxframe)
-(el-get-bundle ieure/aws-el :name aws)
-(el-get-bundle exec-path-from-shell)
-(el-get-bundle emacswiki:osx-plist)
-(el-get-bundle sudo-ext)
+(global-set-key "\C-h" 'delete-backward-char)
+(global-set-key "\C-c\C-l" 'toggle-truncate-lines)  ; 折り返し表示ON/OFF
+(global-set-key "\C-]" 'undo)
+(global-set-key "\M-r" 'revert-buffer)
+(global-set-key "\C-\M-]" 'indent-region)
+(define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
 
 (prefer-coding-system 'utf-8-unix)
 (setq default-buffer-file-coding-system 'utf-8)
@@ -58,13 +42,6 @@
     (setq truncate-lines t))
   (recenter))
 
-(global-set-key "\C-h" 'delete-backward-char)
-(global-set-key "\C-c\C-l" 'toggle-truncate-lines)  ; 折り返し表示ON/OFF
-(global-set-key "\C-]" 'undo)
-(global-set-key "\M-r" 'revert-buffer)
-(global-set-key "\C-\M-]" 'indent-region)
-(define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
@@ -85,3 +62,29 @@
 
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
+
+;; el-getのライブラリ
+(setq el-get-user-package-directory (locate-user-emacs-file "init"))
+(el-get-bundle auto-complete)
+(el-get-bundle rbenv)
+;;(el-get-bundle ruby-mode)
+(el-get-bundle yasnippet)
+(el-get-bundle Enhanced-Ruby-Mode)
+(el-get-bundle ruby-end)
+(el-get-bundle ruby-block)
+(el-get-bundle rspec-mode)
+(el-get-bundle auto-complete-ruby)
+(el-get-bundle auto-complete-yasnippet)
+(el-get-bundle robe-mode)
+(el-get-bundle smart-newline)
+(el-get-bundle anything-rurima)
+(el-get-bundle magit)
+(el-get-bundle magit-gitflow)
+(el-get-bundle mew)
+(el-get-bundle maxframe)
+(el-get-bundle ieure/aws-el :name aws)
+(el-get-bundle exec-path-from-shell)
+(el-get-bundle sudo-ext)
+;;(el-get-bundle osx-plist
+;;  :type http
+;;  :url "http://edward.oconnor.cx/elisp/osx-plist.el")
