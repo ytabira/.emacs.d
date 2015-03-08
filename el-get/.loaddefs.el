@@ -64,6 +64,36 @@ See `auto-complete-mode' for more information on Auto-Complete mode.
 
 ;;;***
 
+;;;### (autoloads nil "aws/aws" "aws/aws.el" (21756 16402 0 0))
+;;; Generated autoloads from aws/aws.el
+
+(autoload 'ec2-describe-instances "aws/aws" "\
+
+
+\(fn REGION)" t nil)
+
+(autoload 'ec2-describe-volumes "aws/aws" "\
+
+
+\(fn REGION)" t nil)
+
+(autoload 'ec2-describe-snapshots "aws/aws" "\
+
+
+\(fn REGION)" t nil)
+
+(autoload 'ec2-describe-groups "aws/aws" "\
+
+
+\(fn REGION)" t nil)
+
+(autoload 'ec2-get-console "aws/aws" "\
+
+
+\(fn REGION INSTANCE)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil "dired-xattr/dired-xattr" "dired-xattr/dired-xattr.el"
 ;;;;;;  (21754 462 0 0))
 ;;; Generated autoloads from dired-xattr/dired-xattr.el
@@ -236,6 +266,40 @@ required.
 
 (autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
 Display a list of packages.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "exec-path-from-shell/exec-path-from-shell"
+;;;;;;  "exec-path-from-shell/exec-path-from-shell.el" (21756 16833
+;;;;;;  0 0))
+;;; Generated autoloads from exec-path-from-shell/exec-path-from-shell.el
+
+(autoload 'exec-path-from-shell-copy-envs "exec-path-from-shell/exec-path-from-shell" "\
+Set the environment variables with NAMES from the user's shell.
+
+As a special case, if the variable is $PATH, then `exec-path' and
+`eshell-path-env' are also set appropriately.  The result is an alist,
+as described by `exec-path-from-shell-getenvs'.
+
+\(fn NAMES)" nil nil)
+
+(autoload 'exec-path-from-shell-copy-env "exec-path-from-shell/exec-path-from-shell" "\
+Set the environment variable $NAME from the user's shell.
+
+As a special case, if the variable is $PATH, then `exec-path' and
+`eshell-path-env' are also set appropriately.  Return the value
+of the environment variable.
+
+\(fn NAME)" t nil)
+
+(autoload 'exec-path-from-shell-initialize "exec-path-from-shell/exec-path-from-shell" "\
+Initialize environment from the user's shell.
+
+The values of all the environment variables named in
+`exec-path-from-shell-variables' are set from the corresponding
+values used in the user's shell.
 
 \(fn)" t nil)
 
@@ -1437,7 +1501,8 @@ See `yas-minor-mode' for more information on Yas minor mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("anything-rurima/anything-rurima.el" "auto-complete-ruby/auto-complete-ruby.el"
+;;;### (autoloads nil nil ("amazon/amazon.el" "anything-rurima/anything-rurima.el"
+;;;;;;  "auto-complete-ruby/auto-complete-ruby.el" "auto-complete-yasnippet/auto-complete-yasnippet.el"
 ;;;;;;  "auto-complete/auto-complete-pkg.el" "el-get/el-get-autoloading.el"
 ;;;;;;  "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
 ;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
@@ -1463,9 +1528,10 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "mew/mew-summary3.el" "mew/mew-summary4.el" "mew/mew-syntax.el"
 ;;;;;;  "mew/mew-thread.el" "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el"
 ;;;;;;  "mew/mew-vars3.el" "mew/mew-varsx.el" "mew/mew-virtual.el"
-;;;;;;  "mew/mew-win32.el" "mew/temp.el" "popup/popup.el" "robe-mode/build.el"
-;;;;;;  "ruby-block/ruby-block.el" "skype/skype.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (21754 34088 917511 0))
+;;;;;;  "mew/mew-win32.el" "mew/temp.el" "osx-plist/osx-plist.el"
+;;;;;;  "popup/popup.el" "robe-mode/build.el" "ruby-block/ruby-block.el"
+;;;;;;  "skype/skype.el" "sudo-ext/sudo-ext.el" "yasnippet/yasnippet-debug.el"
+;;;;;;  "yasnippet/yasnippet-tests.el") (21756 20748 153559 0))
 
 ;;;***
 

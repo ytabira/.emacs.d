@@ -30,6 +30,10 @@
 (el-get-bundle magit-gitflow)
 (el-get-bundle mew)
 (el-get-bundle maxframe)
+(el-get-bundle ieure/aws-el :name aws)
+(el-get-bundle exec-path-from-shell)
+(el-get-bundle emacswiki:osx-plist)
+(el-get-bundle sudo-ext)
 
 (prefer-coding-system 'utf-8-unix)
 (setq default-buffer-file-coding-system 'utf-8)

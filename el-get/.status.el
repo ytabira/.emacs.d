@@ -1,5 +1,7 @@
 ((Enhanced-Ruby-Mode status "installed" recipe
 		     (:name Enhanced-Ruby-Mode :description "Major mode for editing Ruby files" :type github :pkgname "zenspider/enhanced-ruby-mode"))
+ (amazon status "installed" recipe
+	 (:name amazon :after nil :auto-generated t :type emacswiki :description "-- Emacs client for Amazon E-Commerce Service (i.e. use Emacs to search books on Amazon.com)" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/amazon.el"))
  (anything-rurima status "installed" recipe
 		  (:name anything-rurima :after nil :auto-generated t :type emacswiki :description "Look up Japanese Ruby Reference Manual with anything.el" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/anything-rurima.el"))
  (auto-complete status "installed" recipe
@@ -15,6 +17,13 @@
  (auto-complete-ruby status "installed" recipe
 		     (:name auto-complete-ruby :after nil :description "Auto-complete sources for Ruby" :type http :url "http://www.cx4a.org/pub/auto-complete-ruby.el" :depends
 			    (auto-complete)))
+ (auto-complete-yasnippet status "installed" recipe
+			  (:name auto-complete-yasnippet :after nil :description "Auto-complete sources for YASnippet" :type http :url "http://www.cx4a.org/pub/auto-complete-yasnippet.el" :depends
+				 (auto-complete yasnippet)))
+ (aws status "installed" recipe
+      (:name aws :type github :pkgname "ieure/aws-el" :after nil))
+ (aws-el status "required" recipe
+	 (:name aws-el :type github :pkgname "ieure/aws-el" :after nil))
  (cl-lib status "installed" recipe
 	 (:name cl-lib :builtin "24.3" :type elpa :description "Properly prefixed CL functions and macros" :url "http://elpa.gnu.org/packages/cl-lib.html"))
  (dired-xattr status "installed" recipe
@@ -41,6 +50,8 @@
 			  (feat feats)
 			(unload-feature feat t))))
 		  (require 'el-get))))
+ (exec-path-from-shell status "installed" recipe
+		       (:name exec-path-from-shell :after nil :website "https://github.com/purcell/exec-path-from-shell" :description "Emacs plugin for dynamic PATH loading" :type github :pkgname "purcell/exec-path-from-shell"))
  (fuzzy status "installed" recipe
 	(:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
  (git-modes status "installed" recipe
@@ -89,6 +100,32 @@
 	     :build
 	     `(("./configure" ,(concat "--with-emacs=" el-get-emacs))
 	       "make")))
+ (osx-plist status "installed" recipe
+	    (:name osx-plist :type emacswiki :after nil))
+ (package status "installed" recipe
+	  (:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin "24" :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/ba08b24186711eaeb3748f3d1f23e2c2d9ed0d09:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
+		 (progn
+		   (let
+		       ((old-package-user-dir
+			 (expand-file-name
+			  (convert-standard-filename
+			   (concat
+			    (file-name-as-directory default-directory)
+			    "elpa")))))
+		     (when
+			 (file-directory-p old-package-user-dir)
+		       (add-to-list 'package-directory-list old-package-user-dir)))
+		   (setq package-archives
+			 (bound-and-true-p package-archives))
+		   (mapc
+		    (lambda
+		      (pa)
+		      (add-to-list 'package-archives pa 'append))
+		    '(("ELPA" . "http://tromey.com/elpa/")
+		      ("melpa" . "http://melpa.org/packages/")
+		      ("gnu" . "http://elpa.gnu.org/packages/")
+		      ("marmalade" . "http://marmalade-repo.org/packages/")
+		      ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
  (popup status "installed" recipe
 	(:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :submodule nil :pkgname "auto-complete/popup-el"))
  (rbenv status "installed" recipe
@@ -114,6 +151,8 @@
 	(:name skype :description "Skype UI for emacs users." :type github :pkgname "buzztaiki/emacs-skype" :features skype))
  (smart-newline status "installed" recipe
 		(:name smart-newline :after nil :description "The smart-newline.el provide a stress-less newline command for programmer." :type github :pkgname "ainame/smart-newline.el"))
+ (sudo-ext status "installed" recipe
+	   (:name sudo-ext :after nil :auto-generated t :type emacswiki :description "sudo support" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/sudo-ext.el"))
  (yasnippet status "installed" recipe
 	    (:name yasnippet :after nil :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :compile "yasnippet.el" :submodule nil :build
 		   (("git" "submodule" "update" "--init" "--" "snippets")))))
