@@ -12,6 +12,16 @@
 (setenv "LANG" "ja_JP.UTF-8")
 (set-language-environment "Japanese")
 
+(when (eq window-system 'ns)
+  (set-face-attribute 'default nil
+                      :family "Menlo"
+                      :height 140) ;; 14pt
+  (set-fontset-font nil 'japanese-jisx0208
+		    (font-spec :family "Hiragino Kaku Gothic ProN"))
+  (setq face-font-rescale-alist
+        '((".*Hiragino Kaku Gothic ProN.*" . 1.2))))
+(setq line-spacing 0.2)
+
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-c\C-l" 'toggle-truncate-lines)  ; 折り返し表示ON/OFF
 (global-set-key "\C-]" 'undo)
@@ -68,6 +78,8 @@
 (el-get-bundle auto-complete)
 (el-get-bundle rbenv)
 ;;(el-get-bundle ruby-mode)
+(el-get-bundle s)
+(el-get-bundle f)
 (el-get-bundle yasnippet)
 (el-get-bundle Enhanced-Ruby-Mode)
 (el-get-bundle ruby-end)
@@ -85,6 +97,7 @@
 (el-get-bundle ieure/aws-el :name aws)
 (el-get-bundle exec-path-from-shell)
 (el-get-bundle sudo-ext)
-;;(el-get-bundle osx-plist
-;;  :type http
-;;  :url "http://edward.oconnor.cx/elisp/osx-plist.el")
+(el-get-bundle bash-completion)
+(el-get-bundle markdown-mode)
+(el-get-bundle yaml-mode)
+(el-get-bundle k1LoW/emacs-ansible)
