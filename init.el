@@ -21,6 +21,7 @@
   (setq face-font-rescale-alist
         '((".*Hiragino Kaku Gothic ProN.*" . 1.2))))
 (setq line-spacing 0.2)
+(column-number-mode t)
 
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-c\C-l" 'toggle-truncate-lines)  ; 折り返し表示ON/OFF

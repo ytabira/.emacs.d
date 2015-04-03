@@ -9,3 +9,6 @@
 ;; Debugging
 ;; When you've hit the breakpoint, hit C-x C-q to enable inf-ruby.
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+
+; Auto-scrolling
+(setq compilation-scroll-output t)
