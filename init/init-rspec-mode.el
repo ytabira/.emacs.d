@@ -3,8 +3,8 @@
  ;; C-c , t Specとソースを切り替える
 (require 'rspec-mode)
 ;;(custom-set-variables '(rspec-use-rake-flag nil))
-(eval-after-load 'rspec-mode
- '(rspec-install-snippets))
+;;(eval-after-load 'rspec-mode
+;; '(rspec-install-snippets))
 
 ;; Debugging
 ;; When you've hit the breakpoint, hit C-x C-q to enable inf-ruby.
