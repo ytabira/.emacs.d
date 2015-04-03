@@ -102,3 +102,4 @@
 (el-get-bundle markdown-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle k1LoW/emacs-ansible)
+(el-get-bundle php-mode)
