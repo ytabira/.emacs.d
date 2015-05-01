@@ -103,3 +103,4 @@
 (el-get-bundle yaml-mode)
 (el-get-bundle k1LoW/emacs-ansible)
 (el-get-bundle php-mode)
+(el-get-bundle coffee-mode)
