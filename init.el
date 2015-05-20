@@ -24,11 +24,11 @@
 (column-number-mode t)
 
 (global-set-key "\C-h" 'delete-backward-char)
-(global-set-key "\C-c\C-l" 'toggle-truncate-lines)  ; 折り返し表示ON/OFF
+(global-set-key "\C-c\C-l" 'toggle-truncate-lines)
 (global-set-key "\C-]" 'undo)
 (global-set-key "\M-r" 'revert-buffer)
 (global-set-key "\C-\M-]" 'indent-region)
-(define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
+(define-key global-map [?¥] [?\\])
 
 (prefer-coding-system 'utf-8-unix)
 (setq default-buffer-file-coding-system 'utf-8)
@@ -46,7 +46,7 @@
   (terminal-init-bobcat))
 
 (defun toggle-truncate-lines ()
-  "折り返し表示をトグル動作します."
+  "toggle truncate lines."
   (interactive)
   (if truncate-lines
       (setq truncate-lines nil)
@@ -56,7 +56,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-;; emacsでls does not support –dired; see `dired-use-ls-dired’ for more details.と出たときの対処方法
 ;; http://niku.name/articles/2013/04/30/emacs%E3%81%A7ls%20does%20not%20support%20--dired;%20see%20%60dired-use-ls-dired%27%20for%20more%20details.%E3%81%A8%E5%87%BA%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E5%AF%BE%E5%87%A6%E6%96%B9%E6%B3%95
 (setq dired-use-ls-dired t)
 (when (eq system-type 'darwin)
@@ -68,13 +67,10 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-;; ツールバーを非表示
 (when window-system (tool-bar-mode -1))
 
-;; バックアップファイルを作らない
 (setq make-backup-files nil)
 
-;; el-getのライブラリ
 (setq el-get-user-package-directory (locate-user-emacs-file "init"))
 (el-get-bundle auto-complete)
 (el-get-bundle rbenv)
@@ -104,3 +100,20 @@
 (el-get-bundle k1LoW/emacs-ansible)
 (el-get-bundle php-mode)
 (el-get-bundle coffee-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(safe-local-variable-values (quote ((c-hanging-comment-ender-p)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; javascript-modeのタブ幅を2に変更
+;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
+(setq js-indent-level 2)
