@@ -73,7 +73,7 @@
 
 (setq el-get-user-package-directory (locate-user-emacs-file "init"))
 (el-get-bundle auto-complete)
-(el-get-bundle rbenv)
+;;(el-get-bundle rbenv)
 ;;(el-get-bundle ruby-mode)
 (el-get-bundle s)
 (el-get-bundle f)
@@ -100,6 +100,8 @@
 (el-get-bundle k1LoW/emacs-ansible)
 (el-get-bundle php-mode)
 (el-get-bundle coffee-mode)
+(el-get-bundle go-mode)
+(el-get-bundle jinja2-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -117,3 +119,22 @@
 ;; javascript-modeのタブ幅を2に変更
 ;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
 (setq js-indent-level 2)
+
+;; http://d.hatena.ne.jp/tunefs/20130212/p1
+(global-set-key (kbd "C-c w o")
+ (lambda () (interactive)
+   (let ((url (concat "dict://" (read-from-minibuffer "" (current-word)))))
+     (browse-url url))))
+
+;; 以下の書式に従ってモードラインに日付・時刻を表示する
+(setq display-time-string-forms
+      '((format "%s/%s/%s(%s) %s:%s" year month day dayname 24-hours minutes)
+        load
+        (if mail " Mail" "")))
+;; 時刻表示の左隣に日付を追加。
+(setq display-time-kawakami-form t)
+;; 24時間制
+(setq display-time-24hr-format t)
+
+;; 時間を表示
+(display-time)
