@@ -30,7 +30,9 @@
 (global-set-key "\C-\M-]" 'indent-region)
 (define-key global-map [?¥] [?\\])
 
-(prefer-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -102,6 +104,9 @@
 (el-get-bundle coffee-mode)
 (el-get-bundle go-mode)
 (el-get-bundle jinja2-mode)
+(el-get-bundle init-multiterm)
+(el-get-bundle multi-term)
+(el-get-bundle inf-ruby)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
