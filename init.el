@@ -107,10 +107,11 @@
 (el-get-bundle init-multiterm)
 (el-get-bundle multi-term)
 (el-get-bundle inf-ruby)
-(el-get-bundle emacs-w3m)
+;;(el-get-bundle emacs-w3m)
 (el-get-bundle css-mode)
 (el-get-bundle scss-mode)
 (el-get-bundle web-mode)
+(el-get-bundle haml-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
