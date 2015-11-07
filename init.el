@@ -74,7 +74,7 @@
 (setq make-backup-files nil)
 
 (setq el-get-user-package-directory (locate-user-emacs-file "init"))
-(el-get-bundle auto-complete)
+;;(el-get-bundle auto-complete)
 ;;(el-get-bundle rbenv)
 ;;(el-get-bundle ruby-mode)
 ;;(el-get-bundle s)
