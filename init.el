@@ -94,7 +94,7 @@
 (cond ((string-match "24.3.50.1" emacs-version) ;;; For emacs-snapshot
         ;;(el-get-bundle magit)
       )
-      ((string-match "24." emacs-version) ;;; For Emacs24
+      ((string-match "24.4." emacs-version) ;;; For Emacs24.4
         (el-get-bundle magit)
         (el-get-bundle magit-gitflow)
       )
