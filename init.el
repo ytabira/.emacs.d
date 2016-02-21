@@ -25,6 +25,7 @@
 
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-c\C-l" 'toggle-truncate-lines)
+(global-set-key "\C-c\C-t" 'toggle-truncate-lines)
 (global-set-key "\C-]" 'undo)
 (global-set-key "\M-r" 'revert-buffer)
 (global-set-key "\C-\M-]" 'indent-region)
@@ -90,8 +91,21 @@
 ;;(el-get-bundle robe-mode)
 ;;(el-get-bundle smart-newline)
 ;;(el-get-bundle anything-rurima)
-(el-get-bundle magit)
-(el-get-bundle magit-gitflow)
+(cond ((string-match "24.3.50.1" emacs-version) ;;; For emacs-snapshot
+        ;;(el-get-bundle magit)
+      )
+      ((string-match "24." emacs-version) ;;; For Emacs24
+        (el-get-bundle magit)
+        (el-get-bundle magit-gitflow)
+      )
+      ((string-match "23." emacs-version) ;;; For Emacs23
+        ;;(el-get-bundle magit)
+      )
+      (t                                  ;;; other
+        ;;(el-get-bundle magit)
+      )
+)
+
 ;;(el-get-bundle mew)
 ;;(el-get-bundle maxframe)
 ;;(el-get-bundle ieure/aws-el :name aws)
@@ -101,7 +115,7 @@
 ;;(el-get-bundle markdown-mode)
 (el-get-bundle yaml-mode)
 ;;(el-get-bundle k1LoW/emacs-ansible)
-;;(el-get-bundle php-mode)
+(el-get-bundle php-mode)
 (el-get-bundle coffee-mode)
 ;;(el-get-bundle go-mode)
 ;;(el-get-bundle jinja2-mode)
@@ -114,21 +128,10 @@
 (el-get-bundle web-mode)
 (el-get-bundle haml-mode)
 (el-get-bundle nginx-mode)
-(el-get-bundle multi-term)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coffee-tab-width 2)
- '(safe-local-variable-values (quote ((c-hanging-comment-ender-p)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
+(el-get-bundle json-mode)
+(el-get-bundle yasnippet)
+(el-get-bundle helm)
+(el-get-bundle auto-complete)
 ;; javascript-modeのタブ幅を2に変更
 ;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
 (setq js-indent-level 2)
@@ -151,3 +154,14 @@
 
 ;; 時間を表示
 (display-time)
+
+;; MELPA
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
+(global-set-key (kbd "C-x g") 'magit-status)
