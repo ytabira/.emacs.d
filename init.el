@@ -112,7 +112,7 @@
 (el-get-bundle exec-path-from-shell)
 ;;(el-get-bundle sudo-ext)
 (el-get-bundle bash-completion)
-;;(el-get-bundle markdown-mode)
+(el-get-bundle markdown-mode)
 (el-get-bundle yaml-mode)
 ;;(el-get-bundle k1LoW/emacs-ansible)
 (el-get-bundle php-mode)
@@ -129,8 +129,8 @@
 (el-get-bundle haml-mode)
 (el-get-bundle nginx-mode)
 (el-get-bundle json-mode)
-(el-get-bundle yasnippet)
-(el-get-bundle helm)
+;;(el-get-bundle yasnippet)
+;;(el-get-bundle helm)
 (el-get-bundle auto-complete)
 ;; javascript-modeのタブ幅を2に変更
 ;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
@@ -165,3 +165,12 @@
 (package-initialize) ;; You might already have this line
 
 (global-set-key (kbd "C-x g") 'magit-status)
+
+(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+    (normal-top-level-add-subdirs-to-load-path))
+
+(setq el-get-sources
+      '((:name extra-letter-cases
+               :type git
+               :url "https://github.com/chiyano/extra-letter-cases.el.git"
+               :after (add-hook 'prog-mode-hook 'extra-letter-cases-minor-mode))))
