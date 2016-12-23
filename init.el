@@ -82,7 +82,7 @@
 ;;(el-get-bundle s)
 ;;(el-get-bundle f)
 ;;(el-get-bundle yasnippet)
-(el-get-bundle Enhanced-Ruby-Mode)
+(el-get-bundle enh-ruby-mode)
 (el-get-bundle ruby-end)
 (el-get-bundle ruby-block)
 (el-get-bundle rspec-mode)
@@ -91,6 +91,9 @@
 ;;(el-get-bundle robe-mode)
 ;;(el-get-bundle smart-newline)
 ;;(el-get-bundle anything-rurima)
+(el-get-bundle magit)
+(el-get-bundle magit-gitflow)
+;;(el-get-bundle magit-mode)
 (cond ((string-match "24.3.50.1" emacs-version) ;;; For emacs-snapshot
         ;;(el-get-bundle magit)
       )
@@ -115,7 +118,7 @@
 (el-get-bundle markdown-mode)
 (el-get-bundle yaml-mode)
 ;;(el-get-bundle k1LoW/emacs-ansible)
-(el-get-bundle php-mode)
+;;(el-get-bundle php-mode)
 (el-get-bundle coffee-mode)
 ;;(el-get-bundle go-mode)
 ;;(el-get-bundle jinja2-mode)
@@ -132,6 +135,8 @@
 ;;(el-get-bundle yasnippet)
 ;;(el-get-bundle helm)
 (el-get-bundle auto-complete)
+(el-get-bundle extra-letter-cases)
+(el-get-bundle apache-mode)
 ;; javascript-modeのタブ幅を2に変更
 ;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
 (setq js-indent-level 2)
@@ -169,8 +174,31 @@
 (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
     (normal-top-level-add-subdirs-to-load-path))
 
-(setq el-get-sources
-      '((:name extra-letter-cases
-               :type git
-               :url "https://github.com/chiyano/extra-letter-cases.el.git"
-               :after (add-hook 'prog-mode-hook 'extra-letter-cases-minor-mode))))
+;;(setq el-get-sources
+;;      '((:name extra-letter-cases
+;;               :type git
+;;               :url "https://github.com/chiyano/extra-letter-cases.el.git"
+;;               :after (add-hook 'prog-mode-hook 'extra-letter-cases-minor-mode))))
+
+(add-hook 'Javascript-mode-hook `(lambda()(setq tab-width 2)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(package-selected-packages (quote (nil serverspec))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(web-mode-comment-face ((t (:foreground "#D9333F"))))
+ '(web-mode-css-at-rule-face ((t (:foreground "#FF7F00"))))
+ '(web-mode-css-pseudo-class-face ((t (:foreground "#FF7F00"))))
+ '(web-mode-css-rule-face ((t (:foreground "#A0D8EF"))))
+ '(web-mode-doctype-face ((t (:foreground "#82AE46"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "#C97586"))))
+ '(web-mode-html-attr-value-face ((t (:foreground "#82AE46"))))
+ '(web-mode-html-tag-face ((t (:foreground "#E6B422" :weight bold))))
+ '(web-mode-server-comment-face ((t (:foreground "#D9333F")))))
