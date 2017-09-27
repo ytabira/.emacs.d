@@ -17,6 +17,7 @@
   )
 
 (add-hook 'web-mode-hook  'web-mode-hook)
+(add-hook 'web-mode-hook `(lambda()(setq tab-width 2)))
 
 ;; 色の設定
 (custom-set-faces

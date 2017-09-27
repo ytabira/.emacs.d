@@ -81,6 +81,9 @@
 ;;(el-get-bundle ruby-mode)
 
 ;;(el-get-bundle Enhanced-Ruby-Mode)
+;;(el-get-bundle s)
+;;(el-get-bundle f)
+;;(el-get-bundle yasnippet)
 (el-get-bundle enh-ruby-mode)
 (el-get-bundle ruby-end)
 (el-get-bundle ruby-block)
@@ -90,6 +93,9 @@
 ;;(el-get-bundle robe-mode)
 ;;(el-get-bundle smart-newline)
 ;;(el-get-bundle anything-rurima)
+(el-get-bundle magit)
+(el-get-bundle magit-gitflow)
+;;(el-get-bundle magit-mode)
 (cond ((string-match "24.3.50.1" emacs-version) ;;; For emacs-snapshot
         ;;(el-get-bundle magit)
       )
@@ -145,7 +151,6 @@
 (el-get-bundle groovy-emacs-mode)
 (el-get-bundle rubocop)
 (el-get-bundle expand-region)
-
 ;; javascript-modeのタブ幅を2に変更
 ;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
 (setq js-indent-level 2)
