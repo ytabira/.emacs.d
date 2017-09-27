@@ -71,6 +71,7 @@
   (windmove-default-keybindings))
 
 (when window-system (tool-bar-mode -1))
+(menu-bar-mode -1)
 
 (setq make-backup-files nil)
 
@@ -79,10 +80,8 @@
 ;;(el-get-bundle rbenv)
 ;;(el-get-bundle ruby-mode)
 
-;;(el-get-bundle s)
-;;(el-get-bundle f)
-;;(el-get-bundle yasnippet)
-(el-get-bundle Enhanced-Ruby-Mode)
+;;(el-get-bundle Enhanced-Ruby-Mode)
+(el-get-bundle enh-ruby-mode)
 (el-get-bundle ruby-end)
 (el-get-bundle ruby-block)
 (el-get-bundle rspec-mode)
@@ -95,8 +94,8 @@
         ;;(el-get-bundle magit)
       )
       ((string-match "24.4." emacs-version) ;;; For Emacs24.4
-        (el-get-bundle magit)
-        (el-get-bundle magit-gitflow)
+       (el-get-bundle magit)
+       (el-get-bundle magit-gitflow)
       )
       ((string-match "23." emacs-version) ;;; For Emacs23
         ;;(el-get-bundle magit)
@@ -115,7 +114,7 @@
 (el-get-bundle markdown-mode)
 (el-get-bundle yaml-mode)
 ;;(el-get-bundle k1LoW/emacs-ansible)
-(el-get-bundle php-mode)
+;;(el-get-bundle php-mode)
 (el-get-bundle coffee-mode)
 ;;(el-get-bundle go-mode)
 ;;(el-get-bundle jinja2-mode)
@@ -129,9 +128,24 @@
 (el-get-bundle haml-mode)
 (el-get-bundle nginx-mode)
 (el-get-bundle json-mode)
+
+
+(el-get-bundle s)
+(el-get-bundle f)
 ;;(el-get-bundle yasnippet)
 ;;(el-get-bundle helm)
-(el-get-bundle auto-complete)
+;;(el-get-bundle auto-complete)
+;;(el-get-bundle k1LoW/emacs-serverspec)
+
+(el-get-bundle magit)
+(el-get-bundle magit-gitflow)
+(el-get-bundle bracketed-paste)
+(el-get-bundle powershell)
+(el-get-bundle auto-save)
+(el-get-bundle groovy-emacs-mode)
+(el-get-bundle rubocop)
+(el-get-bundle expand-region)
+
 ;; javascript-modeのタブ幅を2に変更
 ;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
 (setq js-indent-level 2)
@@ -169,8 +183,45 @@
 (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
     (normal-top-level-add-subdirs-to-load-path))
 
-(setq el-get-sources
-      '((:name extra-letter-cases
-               :type git
-               :url "https://github.com/chiyano/extra-letter-cases.el.git"
-               :after (add-hook 'prog-mode-hook 'extra-letter-cases-minor-mode))))
+;(setq el-get-sources
+;      '((:name extra-letter-cases
+;               :type git
+;               :url "https://github.com/chiyano/extra-letter-cases.el.git"
+;               :after (add-hook 'prog-mode-hook 'extra-letter-cases-minor-mode))))
+;(el-get-bundle extra-letter-cases)
+
+(add-hook 'enh-ruby-mode-hook '(lambda () (serverspec 1)))
+
+(defun md-table-formatter (start end)
+  (interactive "r")
+  (save-excursion
+    (shell-command-on-region start end "python ~/md-table-formatter.py" nil t)))
+(global-set-key (kbd "C-x t") 'md-table-formatter)
+(put 'downcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(package-selected-packages (quote (enh-ruby-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(web-mode-comment-face ((t (:foreground "#D9333F"))))
+ '(web-mode-css-at-rule-face ((t (:foreground "#FF7F00"))))
+ '(web-mode-css-pseudo-class-face ((t (:foreground "#FF7F00"))))
+ '(web-mode-css-rule-face ((t (:foreground "#A0D8EF"))))
+ '(web-mode-doctype-face ((t (:foreground "#82AE46"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "#C97586"))))
+ '(web-mode-html-attr-value-face ((t (:foreground "#82AE46"))))
+ '(web-mode-html-tag-face ((t (:foreground "#E6B422" :weight bold))))
+ '(web-mode-server-comment-face ((t (:foreground "#D9333F")))))
+
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
+;(load-theme 'solarized t)
+
+;(set-frame-parameter nil 'background-mode 'dark)
+;(set-terminal-parameter nil 'background-mode 'dark)
