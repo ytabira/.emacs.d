@@ -31,6 +31,7 @@
 (global-set-key "\C-\M-]" 'indent-region)
 (define-key global-map [?¥] [?\\])
 
+(setq Buffer-menu-name-width 40)
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
@@ -151,6 +152,7 @@
 (el-get-bundle groovy-emacs-mode)
 (el-get-bundle rubocop)
 (el-get-bundle expand-region)
+(el-get-bundle adoc-mode)
 ;; javascript-modeのタブ幅を2に変更
 ;; http://qiita.com/sawamur@github/items/1eeacf63551c1215a1cd
 (setq js-indent-level 2)
@@ -209,7 +211,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
- '(package-selected-packages (quote (enh-ruby-mode))))
+ '(package-selected-packages (quote (magit enh-ruby-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -225,8 +227,18 @@
  '(web-mode-html-tag-face ((t (:foreground "#E6B422" :weight bold))))
  '(web-mode-server-comment-face ((t (:foreground "#D9333F")))))
 
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
-;(load-theme 'solarized t)
-
 ;(set-frame-parameter nil 'background-mode 'dark)
 ;(set-terminal-parameter nil 'background-mode 'dark)
+
+;; define our own super awesome hook that will remove the before-save-hook
+(defun remove-enh-magic-comment ()
+  (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
+
+;; add the hook to call our super awesome function.
+(add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
+
+;; this is for ruby mode
+(setq ruby-insert-encoding-magic-comment nil)
+
+;; 72 文字折り返しをオミット
+;; (add-hook 'git-commit-mode-hook '(lambda () (setq fill-column nil)))
